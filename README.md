@@ -1,21 +1,22 @@
 # panopi
 #### Create panoramic timelapse images from multiple RPI computers using picamera modules.
 
-This project uses imagezmq to transfer images from panosend RPI's to a panohub RPI. All images are
-sent a timestamp so images are all taken at the same time. The panhub computer
-stores timelapse sequence images and will then attempt a stitch of images.  If successful the pano
-images will be save in a pano-images folder and can be viewed using my included webserver.  There
-are still a few issues with getting consistent cropping in our computer/sewing room. Other locations may be better.
-If necessary I will use my video editor's image stabilization filter. Currently the project is still a work in progress.
+This project uses imagezmq to transfer images from panosend RPI's to a panohub RPI. All panosend RPI's are
+are sent a timestamp so all sequence images are taken at the same time. The panhub computer
+stores timelapse sequence images in media/timelapse folder and will then attempt a stitch the images in the sequence.
+If successful the pano images will be save in the media/pano-images folder and can be viewed using my included webserver.  There
+are still a few issues with getting consistent cropping in our computer/sewing room, probably due to lighting. 
+Other locations may be better. If necessary I will use my video editor's image stabilization filter. 
+Currently the project is still a work in progress.
 
 Claude ....
 
 ## Quick Install
 
 ### PANOHUB Install
-On a raspberry pi computer on your local area network (uses zeroconf). Install the panohub software per curl
+On a raspberry pi computer on your local area network (using zeroconf). Install the panohub software per curl
 script below.  Note This does not need a picamera.  You can also choose to install on one of the
-panosend RPI's.
+panosend RPI's. Stitching takes some time to process so I advise a faster RPI for the panohub RPI.
 
 **IMPORTANT** - It is suggested you do a Raspbian ***sudo apt-get update*** and ***sudo apt-get upgrade***
 before curl install.
