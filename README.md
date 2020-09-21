@@ -9,9 +9,14 @@ into ***~/panohub/media/pano-images*** folder.  These files can be viewed by run
 ***NOTE:***  This project is still in the development stage but I will be happy to assist anyone
 if you post a github issue on the panopi github repo.
 
+Also I have a foamboard design for holding my RPI's that have cases that mount the camera internally.
+I will attach the pdf and images.
+[rpi-stand pdf drawing](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)
+![rpi-stand image](https://github.com/pageauc/panopi/blob/master/rpi-stand.png)
+
 ## Quick Install
 
-### PANOHUB
+### PANOHUB Install
 On a raspberry pi computer on your local area network (uses zeroconf). Install the panohub software per curl
 script below.  Note This does not need a picamera.  You can also choose to install on one of the
 panosend RPI's.
@@ -28,7 +33,7 @@ This will create a /home/pi/panohub folder and required files for communicating 
 stitching received images.  Default timelapse period is 60 seconds.  The webserver can be used to
 view and align images.  
 
-### PANOSEND
+### PANOSEND Install
 On each RPI computer with a picamera installed and working, the curl script below will install the panosend files
 into a /home/pi/panosend folder.
 
@@ -85,6 +90,8 @@ Once you have url. ctl-c to exit webserver then restart in background
   You need to align vertically and horizontally.  Review image-stitching
   output on panohub.py.  
   
-  It is best to start with two panosend cameras and get alignment
+  It is best to start initially with two panosend cameras. You can then get 
+  correct image overlap alignment.  Try a lot of overlap initially then narrow overlap.
+  Images need to align vertically and horizontally.
   You can then add additional panosend hosts to the configuration by
   adding them to the panohub.yaml CAM_HOST_NAMES list variable.
