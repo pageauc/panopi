@@ -1,0 +1,71 @@
+# User Configuration variable settings
+# Purpose - Multi RPI Auto Panoramic Stitching Timelapse
+# Updated - 11 Sep 2020   Testing and Development
+# Done by - Claude Pageau
+
+
+panohub_settings: # These settings are used by pano-hub.py for receiving and stitching images.
+
+    # General Settings
+    CAM_HOST_NAMES : ['rpi-thing1.local', 'rpi-thing2.local', 'rpi-thing3.local']
+    STITCH_PROGRAM : './image-stitching'
+    VERBOSE : True  # Not currently used. Change to logging lib req'd
+    
+    # Image Settings
+    IMAGE_FORMAT : '.jpg'
+    IMAGE_PREFIX : 'pano-tl-'
+    IMAGE_DIR : './media/timelapse'
+    IMAGE_PANO_DIR : './media/pano-images/'
+
+    # Timelapse Settings
+    TIMELAPSE_TIMER : 60  # seconds between timelapse images
+    TIMELAPSE_SEQ_NUM_START : 1000
+    TIMELAPSE_SEQ_NUM_MAX : 400  # Maximum number of SEQ images. 0 = Continuous
+    TIMELAPSE_SEQ_NUM_RECYCLE_ON : True  # When MAX reached True= Restart SEQ False= Exit
+
+    # setting to communicate with remote pano-watch.py used to config and restart pano-send.py
+    ZMQ_WATCH_PORT : '5556'
+    ZMQ_PROTOCOL : 'tcp://'
+    PANOSEND_CONFIG_FILEPATH : './panosend.yaml' 
+    
+panosend_settings:  # NOTICE Not implemented yet. settings are read from panosend.yaml in panohub folder
+                    # panohub.py sends these settings on startup to panowatch.py 
+                    # on remote RPI's running panosend.py and saves as panosend.yaml
+                    # panowatch.py will then start/restart pano-send.py
+
+    # image settings
+    CAM_WIDTH : 1280
+    CAM_HEIGHT : 720
+    CAM_HFLIP : True
+    CAM_VFLIP : True
+    CAM_JPEG_QUALITY : 95
+
+    # panosend.py ZMQ Settings
+    ZMQ_PANO_HUB_IP : '192.168.1.177'   # Note to self.  Need to automate ip setting from panohub.py
+    ZMQ_PANO_HUB_PORT : '5555'
+      
+
+webserver_settings:  # These settings are used by webserver.py
+
+    web_server_port : 8080        # default= 8080 Web server access port eg http://192.168.1.100:8080
+    web_server_root : "media"     # default= "media" webserver root path to webserver image/video sub-folders
+    web_page_title : "PANOPI Media"  # web page title that browser shows
+    web_page_refresh_on : True    # Refresh True=On (per seconds below) False=Off (never)
+    web_page_refresh_sec : "900"  # default= "900" seconds to wait for web page refresh  seconds (15 minutes)
+    web_page_blank : False        # default= True Start left image with a blank page until a right menu item is selected
+                                  # False displays second list[1] item since first may be in progress
+
+    # Left iFrame Image Settings
+    # --------------------------
+    web_image_height : "768"       # default= "768" px height of images to display in iframe
+    web_iframe_width_usage : "75%" # Left Pane - Sets % of total screen width allowed for iframe. Rest for right list
+    web_iframe_width : "100%"      # Desired frame width to display images. can be eg percent "80%" or px "1280"
+    web_iframe_height : "100%"     # Desired frame height to display images. Scroll bars if image larger (percent or px)
+
+    # Right Side Files List
+    # ---------------------
+    web_max_list_entries : 0         # default= 0 All or Specify Max right side file entries to show (must be > 1)
+    web_list_by_datetime : True      # default= True Sort by datetime False= Sort by filename
+    web_list_sort_descending : True  # default= True descending  False= Ascending for sort order (filename or datetime per web_list_by_datetime setting
+
+# ---------------------------------------------- End of User Variables -----------------------------------------------------
