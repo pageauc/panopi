@@ -20,7 +20,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd $INSTALL_DIR
 INSTALL_PATH=$( pwd )
-mkdir -p media
 echo "-----------------------------------------------"
 echo "$STATUS panosend-install.sh ver $ver"
 echo "-----------------------------------------------"
@@ -100,7 +99,7 @@ INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
   adding them to the panohub.yaml CAM_HOST_NAMES list variable.
 
 -----------------------------------------------
-For Detailed Instructions See https://github.com/pageauc/panopi/wiki
+For Detailed Instructions See https://github.com/pageauc/panopi
 $INSTALL_DIR version $ver
 Good Luck Claude ...
 Bye"
