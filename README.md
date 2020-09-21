@@ -2,7 +2,7 @@
 #### Create panoramic timelapse images from multiple RPI computers using picamera modules.
 
 This project uses imagezmq to transfer images from panosend RPI's to a panohub RPI. All images are
-send a timestamp so images are all taken at the same time. The panhub computer
+sent a timestamp so images are all taken at the same time. The panhub computer
 stores timelapse sequence images and will then attempt a stitch of images.  If successful the pano
 images will be save in a pano-images folder and can be viewed using my included webserver.  There
 are still a few issues with getting consistent cropping in our computer/sewing room. Other locations may be better.
@@ -60,7 +60,7 @@ Below is the foamboard design template in pdf format. This can be printed and us
 if you wish.  I have several different heights to allow cameras to see over window frames.  My RPI's have cases that mount the
  camera internally.
 
-[pdf of rpi-stand template drawing](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)
+*** [pdf of rpi-stand template drawing](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf) ***
  Image with three cameras mounted on a board using wooden dowels per design drawing details.
 ![rpi-stand](https://github.com/pageauc/panopi/blob/master/rpi-stand.png)
 
