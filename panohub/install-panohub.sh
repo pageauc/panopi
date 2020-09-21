@@ -78,11 +78,11 @@ INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
     To save changes and exit nano press ctrl-x y
 2 Edit panosend.yaml to reflect IP address of panohub computer.
     ifconfig      # displays ip address details
-    nano panosend.yaml  
+    nano panosend.yaml
     To save changes and exit nano press ctrl-x y
 3 On each panosend host start the panowatch.sh script
     cd ~/panosend
-    ./panowatch.sh start  
+    ./panowatch.sh start
   This will run panowatch.py as a background deamon.
 4 On panohub computer start panohub.py
     cd ~/panohub
@@ -99,9 +99,10 @@ INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
   output.  It is best to start with two panosend cameras and get alignment
   You can then add additional panosend hosts to the configuration by
   adding them to the panohub.yaml CAM_HOST_NAMES list variable.
-  
+
 -----------------------------------------------
 For Detailed Instructions See https://github.com/pageauc/panopi/wiki
 $INSTALL_DIR version $ver
 Good Luck Claude ...
 Bye"
+
