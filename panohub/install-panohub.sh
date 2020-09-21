@@ -34,12 +34,12 @@ else
 fi
 
 for fname in "${installFiles[@]}" ; do
-    wget_output=$(wget -O $fname -q --show-progress https://raw.github.com/pageauc/panopi/panohub/master/$fname)
+    wget_output=$(wget -O $fname -q --show-progress https://raw.github.com/pageauc/panopi/master/panohub/$fname)
     if [ $? -ne 0 ]; then
         if [ $? -ne 0 ]; then
             echo "ERROR - $fname wget Download Failed. Possible Cause Internet Problem."
         else
-            wget -O $fname https://raw.github.com/pageauc/panopi/panohub/master/$fname
+            wget -O $fname https://raw.github.com/pageauc/panopi/master/panohub/$fname
         fi
     fi
 done

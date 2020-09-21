@@ -23,9 +23,7 @@ before curl install.
 ***Step 1*** With mouse left button highlight curl command in code box below. Right click mouse in **highlighted** area and Copy.    
 ***Step 2*** On RPI putty SSH or terminal session right click, select paste then Enter to download and run script.
 
-    curl -L https://github.com/pageauc/panopi/blob/master/panohub/install-panohub.sh | bash
-
-    curl -L https://raw.github.com/pageauc/panopi/master/panohub/install-panhub.sh | bash
+    curl -L https://raw.githubusercontent.com/pageauc/panopi/master/panohub/install-panohub.sh | bash
 
 This will create a /home/pi/panohub folder and required files for communicating with panosend RPI's and 
 stitching received images.  Default timelapse period is 60 seconds.  The webserver can be used to
@@ -38,7 +36,7 @@ into a /home/pi/panosend folder.
 ***Step 1*** With mouse left button highlight curl command in code box below. Right click mouse in **highlighted** area and Copy.    
 ***Step 2*** On RPI putty SSH or terminal session right click, select paste then Enter to download and run script.
 
-    curl -L https://raw.github.com/pageauc/panopi/master/panosend/install-pansend.sh | bash
+    curl -L https://raw.githubusercontent.com/pageauc/panopi/master/panosend/install-panosend.sh | bash
 
 ## Project Description
 
