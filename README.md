@@ -1,18 +1,11 @@
 # panopi
-#### Create panoramic timelapse images from multiple RPI computers with picamera's
+#### Create panoramic timelapse images from multiple RPI computers using picamera modules.
 
-Use multiple raspberry pi computers with picamera's installed and working to take overlapping images
-panosend.py will send images to a panohub.py computer via zmq. panohub.py will save images into
-a ***~/panohub/media/timelapse*** folder then stitch the overlapping sequence images into a cropped pano images and save
-into ***~/panohub/media/pano-images*** folder.  These files can be viewed by running the panohub webserver.
-
-***NOTE:***  This project is still in the development stage but I will be happy to assist anyone
-if you post a github issue on the panopi github repo.
-
-Also I have a foamboard design for holding my RPI's that have cases that mount the camera internally.
-I will attach the pdf and images.
-[rpi-stand pdf drawing](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)
-![rpi-stand image](https://github.com/pageauc/panopi/blob/master/rpi-stand.png)
+This project uses zmq to transfer images from panosend RPI's to a panohub RPI.  The panhub computer
+stores timelapse sequence images and will then attempt a stitch of images.  If successful the pano
+images will be save in a pano-images folder and can be viewed using my included webserver.  There
+are still a few issues with getting consisten cropping but may use my video editor's image stabilization
+filter.  Currently the project is still a work in progress.
 
 ## Quick Install
 
@@ -42,6 +35,31 @@ into a /home/pi/panosend folder.
 
     curl -L https://raw.github.com/pageauc/panopi/master/panosend/install-pansend.sh | bash
 
+## Project Description
+
+Use multiple raspberry pi computers with picamera's installed and working to take overlapping timelapse images
+panosend.py will send images to a panohub.py computer via zmq. panosend.py will then receive a new timelapse timestamp
+that will ensure all images are taken at the same time. panohub.py will save images into
+a ***~/panohub/media/timelapse*** folder then stitch the overlapping sequence images into a cropped pano image and save
+into ***~/panohub/media/pano-images*** folder.  These files can be viewed by running the panohub webserver.
+The stitching program is a modified version of openpano.  For details see my Repo at https://github.com/pageauc/OpenPano
+
+***NOTE:***  This project is still in the development stage but I will be happy to assist anyone
+if you post a github issue on the panopi github repo.
+
+## RPI STAND 
+I found aligning the camera's very tricky.  I designed a simple stand that allows adjusting the
+camera views accurately. The camera image overlap and alignment can be set easily.  Also since the stands
+are just dowels I mounted mine on a board so all cameras can be moved together.  I am using wifi
+and will use a ANKER powered hub with one ft long usb cables.  This should give me a clean setup.
+
+Below is the foamboard design template in pdf format. This can be printed and used as a template. Adjust height to your liking
+if you wish.  I have several different heights to allow cameras to see over window frames.  My RPI's have cases that mount the
+ camera internally.
+
+[pdf of rpi-stand template drawing](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)
+ Image with three cameras mounted on a board using wooden dowels per design drawing details.
+![rpi-stand](https://github.com/pageauc/panopi/blob/master/rpi-stand.png)
 
 ## INSTRUCTIONS 
 (Assumes you are comfortable with SSH, Terminal Session commands)
@@ -95,3 +113,10 @@ Once you have url. ctl-c to exit webserver then restart in background
   Images need to align vertically and horizontally.
   You can then add additional panosend hosts to the configuration by
   adding them to the panohub.yaml CAM_HOST_NAMES list variable.
+
+## Sample Image
+
+This is one of the images taken in our computer/sewing room.  Not very exciting and will post better one
+when the project is further developed.  These are old RPI's.
+
+![rpi-stand image](https://github.com/pageauc/panopi/blob/master/pano-tl-1284.jpg)
