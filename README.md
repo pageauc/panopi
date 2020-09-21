@@ -1,11 +1,14 @@
 # panopi
 #### Create panoramic timelapse images from multiple RPI computers using picamera modules.
 
-This project uses zmq to transfer images from panosend RPI's to a panohub RPI.  The panhub computer
+This project uses imagezmq to transfer images from panosend RPI's to a panohub RPI. All images are
+send a timestamp so images are all taken at the same time. The panhub computer
 stores timelapse sequence images and will then attempt a stitch of images.  If successful the pano
 images will be save in a pano-images folder and can be viewed using my included webserver.  There
-are still a few issues with getting consisten cropping but may use my video editor's image stabilization
-filter.  Currently the project is still a work in progress.
+are still a few issues with getting consistent cropping in our computer/sewing room. Other locations may be better.
+If necessary I will use my video editor's image stabilization filter. Currently the project is still a work in progress.
+
+Claude ....
 
 ## Quick Install
 
