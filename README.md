@@ -120,6 +120,7 @@ Once you have url. ctl-c to exit webserver then restart in background
 ## Sample Image
 
 This is one of the images taken in our computer/sewing room.  Not very exciting and will post better one
-when the project is further developed.  These are old RPI's.
+when the project is further developed.  I use old RPI's.  Note the image below really resized.  Actual images
+are much larger depending on the camera resolution.  Original panosend images were 720p before stitching.
 
 ![rpi-stand image](https://github.com/pageauc/panopi/blob/master/pano-tl-1284.jpg)
