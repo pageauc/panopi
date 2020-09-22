@@ -69,7 +69,7 @@ if you wish.  I have several different heights to allow cameras to see over wind
 (Assumes you are comfortable with SSH, Terminal Session commands)
 
 1. Edit panohub.yaml to change CAM_HOST_NAMES to reflect the panosend zeroconf host names.
-  review other settings as required.    
+review other settings as required.    
   
     cd ~/panohub    
     nano panohub.yaml
@@ -102,21 +102,19 @@ Review output and confirm images are being received. ctrl-c to exit
     cd ~/panohub    
     ./webserver.py
 
-From browser input webserver url:port per instructions.
-
-Once you have url. ctl-c to exit webserver then restart in background
+6. From browser input webserver url:port per instructions. Once you have url. ctl-c to exit webserver then restart in background
 
     ./webserver.sh start    
 
-6. Restart ./panohub.py and align camera(s) using the webserver timelapse images
-  You need to align vertically and horizontally.  Review image-stitching
-  output on panohub.py.  
-  
-  It is best to start initially with two panosend cameras. You can then get 
-  correct image overlap alignment.  Try a lot of overlap initially then narrow overlap.
-  Images need to align vertically and horizontally.
-  You can then add additional panosend hosts to the configuration by
-  adding them to the panohub.yaml CAM_HOST_NAMES list variable.
+7. Restart ./panohub.py and align camera(s) using the webserver timelapse images
+You need to align vertically and horizontally.  Review image-stitching output on panohub.py.
+Once things are aligned you can start panohub.py as a background task using ***panohub.sh start***
+    
+It is best to start initially with two panosend cameras. You can then get 
+correct image overlap alignment.  Try a lot of overlap initially then narrow overlap.
+Images need to align vertically and horizontally.
+You can then add additional panosend hosts to the configuration by
+adding them to the panohub.yaml CAM_HOST_NAMES list variable.
 
 ## Sample Image
 
@@ -126,4 +124,5 @@ are much larger depending on the camera resolution.  Original panosend images we
 
 [Full Size Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1284.jpg)   
 
+Below is a reduced size sample Pano Timelapse Image    
 ![Small Pano image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1284.jpg)
