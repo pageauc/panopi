@@ -61,7 +61,7 @@ Below is the foamboard design template in pdf format. This can be printed and us
 if you wish.  I have several different heights to allow cameras to see over window frames.  My RPI's have cases that mount the
  camera internally.
 
-*** [pdf of rpi-stand template drawing](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf) ***
+[pdf of rpi-stand template drawing](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)
  Image with three cameras mounted on a board using wooden dowels per design drawing details.
 ![rpi-stand](https://github.com/pageauc/panopi/blob/master/rpi-stand.png)
 
@@ -71,42 +71,42 @@ if you wish.  I have several different heights to allow cameras to see over wind
 1. Edit panohub.yaml to change CAM_HOST_NAMES to reflect the panosend zeroconf host names.
   review other settings as required.    
   
-    cd ~/panohub
+    cd ~/panohub    
     nano panohub.yaml
 
 To save changes and exit nano press ctrl-x y     
 
 2. Edit panosend.yaml to reflect IP address of panohub computer.
 
-    ifconfig      # displays ip address details
+    ifconfig      # displays ip address details    
     nano panosend.yaml  
 
 To save changes and exit nano press ctrl-x y
 
 3. On each panosend host start the panowatch.sh script   
 
-    cd ~/panosend
+    cd ~/panosend    
     ./panowatch.sh start  
 
 This will run panowatch.py as a background deamon.
 
 4. On panohub computer start panohub.py   
 
-    cd ~/panohub
+    cd ~/panohub    
     ./panohub.py
 
 Review output and confirm images are being received. ctrl-c to exit    
 
 5. Start the webserver to view images
 
-    cd ~/panohub
+    cd ~/panohub    
     ./webserver.py
 
 From browser input webserver url:port per instructions.
 
 Once you have url. ctl-c to exit webserver then restart in background
 
-    ./webserver.sh start
+    ./webserver.sh start    
 
 6. Restart ./panohub.py and align camera(s) using the webserver timelapse images
   You need to align vertically and horizontally.  Review image-stitching
