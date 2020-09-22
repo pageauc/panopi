@@ -1,7 +1,7 @@
 # PANOPI
 #### Create panoramic timelapse images from multiple Raspberry Pi computers using picamera modules.
 
-This project uses [imagezmq](https://github.com/jeffbass/imagezmq) to transfer images from panosend RPI's to a panohub RPI. 
+This project uses [imagezmq](https://github.com/jeffbass/imagezmq) to transfer images from multiple panosend RPI's to a single panohub RPI. 
 All panosend RPI's are sent a timestamp so all sequence images are taken at the same time. The panhub computer
 stores timelapse sequence images in ***media/timelapse*** folder and will then attempt a stitch the images in the sequence.
 If successful the pano images will be save in the ***media/pano-images*** folder and can be viewed using my included webserver.  There
