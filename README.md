@@ -1,19 +1,20 @@
-# panopi
-#### Create panoramic timelapse images from multiple RPI computers using picamera modules.
+# PANOPI
+#### Create panoramic timelapse images from multiple Raspberry Pi computers using picamera modules.
 
-This project uses [imagezmq](https://github.com/jeffbass/imagezmq) to transfer images from panosend RPI's to a panohub RPI. All panosend RPI's are
-are sent a timestamp so all sequence images are taken at the same time. The panhub computer
-stores timelapse sequence images in media/timelapse folder and will then attempt a stitch the images in the sequence.
-If successful the pano images will be save in the media/pano-images folder and can be viewed using my included webserver.  There
+This project uses [imagezmq](https://github.com/jeffbass/imagezmq) to transfer images from panosend RPI's to a panohub RPI. 
+All panosend RPI's are sent a timestamp so all sequence images are taken at the same time. The panhub computer
+stores timelapse sequence images in ***media/timelapse*** folder and will then attempt a stitch the images in the sequence.
+If successful the pano images will be save in the ***media/pano-images*** folder and can be viewed using my included webserver.  There
 are still a few issues with getting consistent cropping in our computer/sewing room, probably due to lighting. 
 Other locations may be better. If necessary I will use my video editor's image stabilization filter. 
-Currently the project is still a work in progress.
+Currently the project is still a work in progress. Using a RPI4 as hub I was able to get stitch times of about six seconds.
+will do more testing as project moves along
 
 Claude ....
 
-## Quick Install
+## QUICK INSTALL
 
-### PANOHUB Install
+### PANOHUB INSTALL
 On a raspberry pi computer on your local area network (using zeroconf). Install the panohub software per curl
 script below.  Note This does not need a picamera.  You can also choose to install on one of the
 panosend RPI's. Stitching takes some time to process so I advise a faster RPI for the panohub RPI.
@@ -30,7 +31,7 @@ This will create a /home/pi/panohub folder and required files for communicating 
 stitching received images.  Default timelapse period is 60 seconds.  The webserver can be used to
 view and align images.  
 
-### PANOSEND Install
+### PANOSEND INSTALL
 On each RPI computer with a picamera installed and working, the curl script below will install the panosend files
 into a /home/pi/panosend folder.
 
@@ -39,7 +40,7 @@ into a /home/pi/panosend folder.
 
     curl -L https://raw.githubusercontent.com/pageauc/panopi/master/panosend/install-panosend.sh | bash
 
-## Project Description
+## PROJECT DESCRIPTION
 
 Use multiple raspberry pi computers with picamera's installed and working to take overlapping timelapse images
 panosend.py will send images to a panohub.py computer via zmq. panosend.py will then receive a new timelapse timestamp
@@ -51,19 +52,22 @@ The stitching program is a modified version of openpano.  For details see my Rep
 ***NOTE:***  This project is still in the development stage but I will be happy to assist anyone
 if you post a github issue on the panopi github repo.
 
-## RPI STAND 
-I found aligning the camera's very tricky.  I designed a simple stand that allows adjusting the
-camera views accurately. The camera image overlap and alignment can be set easily.  Also since the stands
-are just dowels I mounted mine on a board so all cameras can be moved together.  I am using wifi
-and will use a ANKER powered hub with one ft long usb cables.  This should give me a clean setup.
+## RPI CAM STAND 
+I found aligning the camera's very tricky.  I designed a simple foamboard stand that allows adjusting the
+camera views accurately. The camera image overlap and alignment can be set easily.  Also since the stand
+mounts are just dowels, I mounted mine on a board so camera setup can be transported easily.  I am using wifi
+and will use a ANKER powered hub with one ft long usb cables. This will give a clean setup. The cam stand
+dowel can be inserted into any horizontal or vertical serface (as long as you can drill a dowel hole). I suggest
+you mount to board and then mount the board on a wall or flat surface.
 
-Below is the foamboard design template in pdf format. This can be printed and used as a template. Adjust height to your liking
-if you wish.  I have several different heights to allow cameras to see over window frames.  My RPI's have cases that mount the
- camera internally.
+Below is the foam board design template in pdf format. This can be printed and used as a template. Adjust height to your liking
+if you wish.  I have made several different heights to allow cameras to see over window frames.  My RPI's have cases that mount the
+ camera internally. If you have different case your camera mounting details might be different.
 
-[pdf of rpi-stand template drawing](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)
- Image with three cameras mounted on a board using wooden dowels per design drawing details.
-![rpi-stand](https://github.com/pageauc/panopi/blob/master/rpi-stand.png)
+[RPI CAM STAND PDF template](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)    
+
+Image with three cameras mounted on a board using wooden dowels per design drawing details.  
+![RPI CAM STAND](https://github.com/pageauc/panopi/blob/master/rpi-stand.png)
 
 ## INSTRUCTIONS 
 (Assumes you are comfortable with SSH, Terminal Session commands)
@@ -116,8 +120,7 @@ Images need to align vertically and horizontally.
 You can then add additional panosend hosts to the configuration by
 adding them to the panohub.yaml CAM_HOST_NAMES list variable.
 
-## Sample Image
-
+## SAMPLE IMAGE
 This is one of the images taken in our computer/sewing room.  Not very exciting and will post better one
 when the project is further developed.  I use old RPI's.  Note the image below really resized.  Actual images
 are much larger depending on the camera resolution.  Original panosend images were 720p before stitching.
