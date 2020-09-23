@@ -78,7 +78,7 @@ MY_PATH = os.path.abspath(__file__)
 BASE_DIR = os.path.dirname(MY_PATH)
 BASE_FILENAME = os.path.splitext(os.path.basename(MY_PATH))[0]
 PROG_NAME = os.path.basename(__file__)
-PROG_VER = 'ver 0.61'
+PROG_VER = '0.62'
 
 # Yaml File Settings to read variables
 YAML_FILEPATH = './panohub.yaml'
@@ -86,12 +86,11 @@ YAML_SECTION_NAME = 'panohub_settings'
 YAML_PANOSEND_SECTION_NAME = 'panosend_settings'
 TIMELAPSE_SEQ_COUNTER_PATH = os.path.join(BASE_DIR, BASE_FILENAME + '.dat')
 
-def read_yaml_to_stream(yaml_file_path, yaml_section_name):
+def get_panosend_yaml_stream(yaml_file_path, yaml_section_name):
     '''
-    Read configuration variables from a yaml file per the specified
-    yaml file path and yaml file section name.
-    Only the specified yaml file section variables will be read, all other yaml
-    sections will be ignored.
+    Read panosend_settings from the panohub.yaml. Dynamically edit
+    variable ZMQ_PANOHUB_IP to actual panohub computer ip using socket commands
+    Create a panosend.yaml data stream ready to send to remote panosend RPI's
     '''
     yaml_stream = 'panosend_settings:\n' + '\n'
     if os.path.isfile(yaml_file_path):
@@ -100,7 +99,7 @@ def read_yaml_to_stream(yaml_file_path, yaml_section_name):
         with open(yaml_file_path) as conf:
             config = yaml.safe_load(conf)
             for var in config[yaml_section_name]:
-                if str(var) == 'ZMQ_PANO_HUB_IP':
+                if str(var) == 'ZMQ_PANOHUB_IP':
                     config[yaml_section_name][var] = socket.gethostbyname(socket.gethostname() + '.local')
                 yaml_stream += '    ' + var + ' : ' + str(config[yaml_section_name][var]) + '\n'
         return yaml_stream.encode('ascii')
@@ -147,7 +146,7 @@ def notify_senders(host_list, restart=True):
     '''
 
     if restart:
-        yaml_data = read_yaml_to_stream(YAML_FILEPATH, YAML_PANOSEND_SECTION_NAME)
+        yaml_data = get_panosend_yaml_stream(YAML_FILEPATH, YAML_PANOSEND_SECTION_NAME)
         print('panohub.py: Restart panosend.py on remote hosts')
     else:
         yaml_data = b'stop'
@@ -163,7 +162,7 @@ def notify_senders(host_list, restart=True):
         context = zmq.Context()
         sender = context.socket(zmq.REQ)
         sender.connect(ZMQ_PROTOCOL + ip + ":" + port)
-        print('panohub.py: %s Send yaml data at %s:%s' % (key, ip, port))
+        print('panohub.py: %s Send yaml data to %s:%s' % (key, ip, port))
         reply_from = b''
         while not (reply_from == ip_addr):
             sender.send(yaml_data)
@@ -405,7 +404,7 @@ def do_pano_hub():
             cam_recv_cnt = 0
 
 print('-----------------------------------------------------------')
-print('%s: %s written by Claude Pageau' % (PROG_NAME, PROG_VER))
+print('%s: Ver %s written by Claude Pageau' % (PROG_NAME, PROG_VER))
 print('-----------------------------------------------------------')
 print('panohub.py: Version %s Initializing ...' % PROG_VER)
 read_yaml_vars(YAML_FILEPATH, YAML_SECTION_NAME)
@@ -427,4 +426,4 @@ except KeyboardInterrupt:
     print('panohub.py: User Exited with keyboard ctrl-c')
 finally:
     notify_senders(CAM_HOST_NAMES, False)
-    print('panohub.py: Version %s Bye ...' % PROG_VER)
+    print('panohub.py: Ver %s Bye ...' % PROG_VER)

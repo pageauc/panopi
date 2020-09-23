@@ -13,8 +13,8 @@ Press Ctrl-C To End programs
 '''
 
 from __future__ import print_function
-PROG_VER = '0.61'
-print("panosend.py: Version %s Loading ...." % PROG_VER)
+PROG_VER = '0.62'
+print("panosend.py: Ver %s Loading ...." % PROG_VER)
 
 import sys
 import os
@@ -108,7 +108,7 @@ def take_stitch_image():
     RPI_NAME = socket.gethostname()
     print('panosend.py: %s Initializing PiCamera' % RPI_NAME)
     ZMQ_PROTOCOL = 'tcp://'
-    ZMQ_HUB = ZMQ_PROTOCOL + ZMQ_PANO_HUB_IP + ":" + str(ZMQ_PANO_HUB_PORT)
+    ZMQ_HUB = ZMQ_PROTOCOL + ZMQ_PANOHUB_IP + ":" + str(ZMQ_PANOHUB_PORT)
     print('panosend.py: Connect %s to %s' % (RPI_NAME, ZMQ_HUB))
     sender = imagezmq.ImageSender(connect_to=ZMQ_HUB)
     with picamera.PiCamera() as camera:
@@ -151,5 +151,5 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print('')
         print('panosend.py: User Exited with ctrl-c')
-        print("panosend.py: Version %s Bye ..." % PROG_VER)
+        print("panosend.py: Ver %s Bye ..." % PROG_VER)
 

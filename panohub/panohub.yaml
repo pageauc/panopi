@@ -10,7 +10,7 @@ panohub_settings: # These settings are used by pano-hub.py for receiving and sti
     CAM_HOST_NAMES : ['rpi-thing1.local', 'rpi-thing2.local', 'rpi-thing3.local']
     STITCH_PROGRAM : './image-stitching'
     VERBOSE : True  # Not currently used. Change to logging lib req'd
-    
+
     # Image Settings
     IMAGE_FORMAT : '.jpg'
     IMAGE_PREFIX : 'pano-tl-'
@@ -26,11 +26,11 @@ panohub_settings: # These settings are used by pano-hub.py for receiving and sti
     # setting to communicate with remote pano-watch.py used to config and restart pano-send.py
     ZMQ_WATCH_PORT : '5556'
     ZMQ_PROTOCOL : 'tcp://'
-    PANOSEND_CONFIG_FILEPATH : './panosend.yaml' 
-    
+    PANOSEND_CONFIG_FILEPATH : './panosend.yaml'
+
 panosend_settings:  # panohub.py reads these settings on startup.
-                    # The ZMQ_PANO_HUB_IP will by modified to the actual panohub host ip. 
-                    # On the remote panosend RPI's running panowatch.py these settings will be 
+                    # The ZMQ_PANO_HUB_IP will by modified to the actual panohub host ip.
+                    # On the remote panosend RPI's running panowatch.py these settings will be
                     # saved as panosend.yaml by panowatch.py. panowatch.py will then
                     # restart panosend.py and be ready to communicate with hub
 
@@ -42,9 +42,9 @@ panosend_settings:  # panohub.py reads these settings on startup.
     CAM_JPEG_QUALITY : 95
 
     # panosend.py ZMQ Settings
-    ZMQ_PANO_HUB_IP : '192.168.1.177'   # Note panohub will dynamically change this to it's actual IP (no need to edit)
-    ZMQ_PANO_HUB_PORT : '5555'
-      
+    ZMQ_PANOHUB_IP : '192.168.1.177'   # Note (No Need To Edit) panohub will dynamically change this to it's actual IP
+    ZMQ_PANOHUB_PORT : '5555'
+
 
 webserver_settings:  # These settings are used by webserver.py
 
