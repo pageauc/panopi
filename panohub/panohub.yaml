@@ -2,7 +2,7 @@
 # Purpose - Multi RPI Auto Panoramic Stitching Timelapse
 # Updated - 11 Sep 2020   Testing and Development
 # Done by - Claude Pageau
-
+# version 0.62
 
 panohub_settings: # These settings are used by pano-hub.py for receiving and stitching images.
 

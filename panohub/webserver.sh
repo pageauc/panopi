@@ -4,7 +4,7 @@
 # Add the following command to the /etc/rc.local
 # /home/pi/pi-panonet/webserver.sh start
 
-progpath="/home/pi/pipano/panohub"
+progpath="./"
 progname="webserver.py"
 
 echo "$0 ver 0.5 written by Claude Pageau"
