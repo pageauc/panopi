@@ -78,7 +78,7 @@ MY_PATH = os.path.abspath(__file__)
 BASE_DIR = os.path.dirname(MY_PATH)
 BASE_FILENAME = os.path.splitext(os.path.basename(MY_PATH))[0]
 PROG_NAME = os.path.basename(__file__)
-PROG_VER = '0.62'
+PROG_VER = '0.63'
 
 # Yaml File Settings to read variables
 YAML_FILEPATH = './panohub.yaml'
@@ -158,7 +158,7 @@ def notify_senders(host_list, restart=True):
         host_name = pano_senders[key]
         ip, port = val  # Read sender connection details
         ip_addr = ip.encode('utf-8')
-        print('panohub.py: %s Connect' % key)
+        print('panohub.py: %s Connect %s:%s' % (key, ip, port))
         context = zmq.Context()
         sender = context.socket(zmq.REQ)
         sender.connect(ZMQ_PROTOCOL + ip + ":" + port)
@@ -168,9 +168,10 @@ def notify_senders(host_list, restart=True):
             sender.send(yaml_data)
             reply_from = sender.recv()
             if reply_from == ip_addr:
-                print('panohub.py: Success: Got Reply from %s' % reply_from)
+                print('panohub.py: %s Success: Got Reply from %s' % (key, reply_from))
             else:
-                print('panohub.py: Retry .. Got Reply from %s instead of %s' % (reply_from, ip_addr))
+                print('panohub.py: %s Retry .. Got Reply from %s instead of %s' %
+                      (key, reply_from, ip_addr))
             time.sleep(0.2)  # Allow short delay before retry.
 
 #---------------------------------------------------------------
@@ -323,10 +324,6 @@ def stitch_images(image_seq_num, stitch_cmd):
         print('panohub.py: Exit Program: SEQ_MAX=%i and RECYCLE_ON=%s' %
                (TIMELAPSE_SEQ_NUM_MAX, TIMELAPSE_SEQ_NUM_RECYCLE_ON))
         sys.exit(1)
-    print('panohub.py: Seq %i Waiting for Next Timelapse Images ...' %
-          image_seq_num)
-    print('panohub.py: Seq %i Current Time is %s' %
-          (image_seq_num, datetime.datetime.now()))
 
 #---------------------------------------------------------------
 def do_pano_hub():
@@ -350,9 +347,9 @@ def do_pano_hub():
     timelapse_time = time.time() + TIMELAPSE_TIMER
     next_timelapse_message = timestamp_to_string(timelapse_time)
     first_timelapse = True
-    print('panohub.py: Next timelapse is at %s' % next_timelapse_message)
     print('panohub.py: Time Now is %s' % datetime.datetime.now())
-    print('panohub.py: Seq %i Listening for Images ...' % image_seq_num)
+    print('panohub.py: Next timelapse is at %s' % next_timelapse_message)
+    print('panohub.py: Seq %i Listening for panosend Images ...' % image_seq_num)
     while True:  # process sent images until Ctrl-C pressed
         pano_send_recv = []  # Blank list to keep track sending nodes
         take_timelapse = timelapse_check(timelapse_start)
@@ -402,6 +399,9 @@ def do_pano_hub():
             stitch_path = os.path.join(IMAGE_PANO_DIR, stitch_filename)
             stitch_cmd = STITCH_PROGRAM + ' ' + stitch_path
             cam_recv_cnt = 0
+            print('panohub.py: Time Now is %s' % datetime.datetime.now())
+            print('panohub.py: Next timelapse is at %s' % next_timelapse_message)
+            print('panohub.py: Seq %i Listening for panosend Images ...' % image_seq_num)           
 
 print('-----------------------------------------------------------')
 print('%s: Ver %s written by Claude Pageau' % (PROG_NAME, PROG_VER))
