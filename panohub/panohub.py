@@ -78,7 +78,7 @@ MY_PATH = os.path.abspath(__file__)
 BASE_DIR = os.path.dirname(MY_PATH)
 BASE_FILENAME = os.path.splitext(os.path.basename(MY_PATH))[0]
 PROG_NAME = os.path.basename(__file__)
-PROG_VER = '0.63'
+PROG_VER = '0.64'
 
 # Yaml File Settings to read variables
 YAML_FILEPATH = './panohub.yaml'
@@ -348,7 +348,8 @@ def do_pano_hub():
     next_timelapse_message = timestamp_to_string(timelapse_time)
     first_timelapse = True
     print('panohub.py: Time Now is %s' % datetime.datetime.now())
-    print('panohub.py: Next timelapse is at %s' % next_timelapse_message)
+    print('panohub.py: Next timelapse is at %s in %i sec' %
+          (next_timelapse_message, TIMELAPSE_TIMER))
     print('panohub.py: Seq %i Listening for panosend Images ...' % image_seq_num)
     while True:  # process sent images until Ctrl-C pressed
         pano_send_recv = []  # Blank list to keep track sending nodes
@@ -400,8 +401,9 @@ def do_pano_hub():
             stitch_cmd = STITCH_PROGRAM + ' ' + stitch_path
             cam_recv_cnt = 0
             print('panohub.py: Time Now is %s' % datetime.datetime.now())
-            print('panohub.py: Next timelapse is at %s' % next_timelapse_message)
-            print('panohub.py: Seq %i Listening for panosend Images ...' % image_seq_num)           
+            print('panohub.py: Next timelapse is at %s in %i sec' %
+                  (next_timelapse_message, TIMELAPSE_TIMER))
+            print('panohub.py: Seq %i Listening for panosend Images ...' % image_seq_num)
 
 print('-----------------------------------------------------------')
 print('%s: Ver %s written by Claude Pageau' % (PROG_NAME, PROG_VER))
