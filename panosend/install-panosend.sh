@@ -54,6 +54,7 @@ sudo apt-get -yq install python-picamera
 sudo apt-get -yq install python3-picamera
 sudo apt-get -yq install python-opencv
 sudo apt-get -yq install python3-opencv
+sudo apt-get -yq install avahi-daemon
 sudo apt-get -yq install dos2unix
 sudo pip install pyYAML
 sudo pip3 install pyYAML

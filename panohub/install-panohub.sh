@@ -57,6 +57,7 @@ sudo apt-get -yq install python3-numpy
 sudo apt-get -yq install python-opencv
 sudo apt-get -yq install python3-opencv
 sudo apt-get -yq install dos2unix
+sudo apt-get -yq install avahi-daemon
 sudo pip install pyYAML
 sudo pip3 install pyYAML
 sudo pip3 install imagezmq
