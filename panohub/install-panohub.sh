@@ -1,7 +1,7 @@
 #!/bin/bash
 # install-panosend.sh script written by Claude Pageau Sep-2020
 
-ver="0.5"
+ver="0.61"
 INSTALL_DIR='panohub'  # Default folder install location
 
 cd ~
@@ -26,10 +26,10 @@ echo "$STATUS panosend-install.sh ver $ver"
 echo "-----------------------------------------------"
 echo "$STATUS Download GitHub Files"
 if $is_upgrade ; then
-    installFiles=("panohub.py" "panohub.sh" "panohub.yaml" "panosend.yaml" \
+    installFiles=("panohub.py" "panohub.sh" "panohub.yaml" \
                   "webserver.py" "webserver.sh" "image-stitching" "config.cfg")
 else
-    installFiles=("panohub.py" "panohub.sh" "panohub.yaml" "panosend.yaml" \
+    installFiles=("panohub.py" "panohub.sh" "panohub.yaml" \
                   "webserver.py" "webserver.sh" "image-stitching" "config.cfg")
 fi
 

@@ -4,16 +4,17 @@ panosend.py -- written by Claude Pageau https://github.com/pageauc
 
 Description:
 This program will take a picamera image and
-send it to panohub.py via zmq settings.  Then wait for
+send it to pano-hub.py via zmq settings.  Then wait for
 a return message containing the time for the next
-image to be taken.  panohub.py will then
+image to be taken.  pano-hub.py will then
 attempt to stitch images into a panorama image if properly overlapped.
 
 Press Ctrl-C To End programs
 '''
 
 from __future__ import print_function
-print("panosend: Loading ....")
+PROG_VER = '0.61'
+print("panosend.py: Version %s Loading ...." % PROG_VER)
 
 import sys
 import os
@@ -21,8 +22,6 @@ import time
 import datetime
 import socket
 import numpy as np
-
-PROG_VER = '0.5'
 
 try:
     import yaml
@@ -109,7 +108,7 @@ def take_stitch_image():
     RPI_NAME = socket.gethostname()
     print('panosend.py: %s Initializing PiCamera' % RPI_NAME)
     ZMQ_PROTOCOL = 'tcp://'
-    ZMQ_HUB = ZMQ_PROTOCOL + ZMQ_PANO_HUB_IP + ":" + ZMQ_PANO_HUB_PORT
+    ZMQ_HUB = ZMQ_PROTOCOL + ZMQ_PANO_HUB_IP + ":" + str(ZMQ_PANO_HUB_PORT)
     print('panosend.py: Connect %s to %s' % (RPI_NAME, ZMQ_HUB))
     sender = imagezmq.ImageSender(connect_to=ZMQ_HUB)
     with picamera.PiCamera() as camera:
@@ -142,9 +141,9 @@ if __name__ == '__main__':
 
     YAML_FILEPATH = './panosend.yaml'
     YAML_SECTION_NAME = 'panosend_settings'
-    
+
     # Read variable settings from yaml file.
-    print('panosend.py: Import Settings from %s %s' % 
+    print('panosend.py: Import Settings from %s %s' %
           (YAML_FILEPATH, YAML_SECTION_NAME))
     read_yaml_file(YAML_FILEPATH, YAML_SECTION_NAME)
     try:
@@ -152,3 +151,5 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print('')
         print('panosend.py: User Exited with ctrl-c')
+        print("panosend.py: Version %s Bye ..." % PROG_VER)
+

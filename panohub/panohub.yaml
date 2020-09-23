@@ -28,10 +28,11 @@ panohub_settings: # These settings are used by pano-hub.py for receiving and sti
     ZMQ_PROTOCOL : 'tcp://'
     PANOSEND_CONFIG_FILEPATH : './panosend.yaml' 
     
-panosend_settings:  # NOTICE Not implemented yet. settings are read from panosend.yaml in panohub folder
-                    # panohub.py sends these settings on startup to panowatch.py 
-                    # on remote RPI's running panosend.py and saves as panosend.yaml
-                    # panowatch.py will then start/restart pano-send.py
+panosend_settings:  # panohub.py reads these settings on startup.
+                    # The ZMQ_PANO_HUB_IP will by modified to the actual panohub host ip. 
+                    # On the remote panosend RPI's running panowatch.py these settings will be 
+                    # saved as panosend.yaml by panowatch.py. panowatch.py will then
+                    # restart panosend.py and be ready to communicate with hub
 
     # image settings
     CAM_WIDTH : 1280

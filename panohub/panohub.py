@@ -78,30 +78,35 @@ MY_PATH = os.path.abspath(__file__)
 BASE_DIR = os.path.dirname(MY_PATH)
 BASE_FILENAME = os.path.splitext(os.path.basename(MY_PATH))[0]
 PROG_NAME = os.path.basename(__file__)
-PROG_VER = 'ver 0.5'
+PROG_VER = 'ver 0.61'
 
 # Yaml File Settings to read variables
 YAML_FILEPATH = './panohub.yaml'
 YAML_SECTION_NAME = 'panohub_settings'
-
+YAML_PANOSEND_SECTION_NAME = 'panosend_settings'
 TIMELAPSE_SEQ_COUNTER_PATH = os.path.join(BASE_DIR, BASE_FILENAME + '.dat')
 
-#---------------------------------------------------------------
-def read_yaml(filepath):
+def read_yaml_to_stream(yaml_file_path, yaml_section_name):
     '''
-    Read yaml file settings into a byte stream.
-    This stream will be used to update
-    remote hosts panosend.yaml files.
+    Read configuration variables from a yaml file per the specified
+    yaml file path and yaml file section name.
+    Only the specified yaml file section variables will be read, all other yaml
+    sections will be ignored.
     '''
-    if os.path.isfile(filepath):
-        # Create file if it does not exist
-        yaml_config = b''
-        with open(filepath, 'rb') as f:
-            for line in f:
-                yaml_config += line
-        return yaml_config
+    yaml_stream = 'panosend_settings:\n' + '\n'
+    if os.path.isfile(yaml_file_path):
+        print("panohub.py: Read %s section from yaml file %s" % (yaml_section_name, yaml_file_path))
+        yaml_stream = YAML_PANOSEND_SECTION_NAME + ':\n'
+        with open(yaml_file_path) as conf:
+            config = yaml.safe_load(conf)
+            for var in config[yaml_section_name]:
+                if str(var) == 'ZMQ_PANO_HUB_IP':
+                    config[yaml_section_name][var] = socket.gethostbyname(socket.gethostname() + '.local')
+                yaml_stream += '    ' + var + ' : ' + str(config[yaml_section_name][var]) + '\n'
+        return yaml_stream.encode('ascii')
     else:
-        print('panohub.py: Could Not Find File %s' % filepath)
+        print('panohub.py: ERROR: File Not Found %s' % yaml_file_path)
+        print('            Cannot Read configuration variables.')
         sys.exit(1)
 
 #---------------------------------------------------------------
@@ -142,7 +147,7 @@ def notify_senders(host_list, restart=True):
     '''
 
     if restart:
-        yaml_data = read_yaml(PANOSEND_CONFIG_FILEPATH)
+        yaml_data = read_yaml_to_stream(YAML_FILEPATH, YAML_PANOSEND_SECTION_NAME)
         print('panohub.py: Restart panosend.py on remote hosts')
     else:
         yaml_data = b'stop'
@@ -402,7 +407,7 @@ def do_pano_hub():
 print('-----------------------------------------------------------')
 print('%s: %s written by Claude Pageau' % (PROG_NAME, PROG_VER))
 print('-----------------------------------------------------------')
-print('panohub.py: Initializing ...')
+print('panohub.py: Version %s Initializing ...' % PROG_VER)
 read_yaml_vars(YAML_FILEPATH, YAML_SECTION_NAME)
 print('%s: %s modified by Claude Pageau from https://github.com/ppwwyyxx/OpenPano' %
       (PROG_NAME, STITCH_PROGRAM))
@@ -422,4 +427,4 @@ except KeyboardInterrupt:
     print('panohub.py: User Exited with keyboard ctrl-c')
 finally:
     notify_senders(CAM_HOST_NAMES, False)
-    print('panohub.py: Bye ...')
+    print('panohub.py: Version %s Bye ...' % PROG_VER)
