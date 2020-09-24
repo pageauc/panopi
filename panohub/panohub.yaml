@@ -42,7 +42,7 @@ panosend_settings:  # panohub.py reads these settings on startup.
     CAM_JPEG_QUALITY : 95
 
     # panosend.py ZMQ Settings
-    ZMQ_PANOHUB_IP : '192.168.1.177'   # Note (No Need To Edit) panohub will dynamically change this to it's actual IP
+    ZMQ_PANOHUB_IP : '192.168.1.XXX'   # Note (No Need To Edit) panohub will dynamically change this to it's actual IP
     ZMQ_PANOHUB_PORT : '5555'
 
 

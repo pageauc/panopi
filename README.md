@@ -72,58 +72,65 @@ Image with three cameras mounted on a board using wooden dowels per design drawi
 ## INSTRUCTIONS 
 (Assumes you are comfortable with SSH, Terminal Session commands)
 
-1. Edit panohub.yaml to change CAM_HOST_NAMES to reflect the panosend zeroconf host names.
-review other settings as required.    
+1. Edit panohub.yaml to change ***panohub_settings*** CAM_HOST_NAMES to reflect the panosend zeroconf host names.
+review other settings like IMAGE_PREFIX, TIMELAPSE_TIMER, Etc as required. 
+Move down to ***panosend_settings*** and review CAM_WIDTH, CAM_HEIGHT, Etc
+***IMPORTANT*** You DO NOT need to change the ***ZMQ_PANOHUB_IP*** setting since this will
+be changed automatically to reflect the actual panohub computer ip address.
   
     cd ~/panohub    
     nano panohub.yaml
 
 To save changes and exit nano press ctrl-x y     
 
-2. Edit panosend.yaml to reflect IP address of panohub computer.
-
-    ifconfig      # displays ip address details    
-    nano panosend.yaml  
-
-To save changes and exit nano press ctrl-x y
-
-3. On each panosend host start the panowatch.sh script   
+2. On each panosend host start the panowatch.sh script   
 
     cd ~/panosend    
     ./panowatch.sh start  
 
-This will run panowatch.py as a background deamon.
+This will run panowatch.py as a background task.
 
-4. On panohub computer start panohub.py   
+3. On panohub computer start the webserver to view images
+
+    cd ~/panohub    
+    ./webserver.sh start
+
+4. From browser input webserver url:port of the webserver per examples below
+
+    192.168.1.177:8080    
+    mypanohub.local:8080
+
+When panohub.py is started, received images will be saved into the folders timelapse and pano_images
+    
+5. On panohub computer start panohub.py per commands below.  This will read the panohub.yaml file panosend_settings
+section, modify the ZMQ_PANOHUB_IP setting and stream to panowatch.py on each panosend computer.
+This will create a panosend.yaml file and start/restart panosend.sh that will get its settings from this yaml file.   
 
     cd ~/panohub    
     ./panohub.py
 
-Review output and confirm images are being received. ctrl-c to exit    
+Review panohub.py log messages and confirm images are being received. ctrl-c to exit      
+Align panosend computer camera(s) using the webserver timelapse images as a guide. Pick a
+few objects in images for reference.
+You will need to align camera views vertically and horizontally.
+Review image-stitching output on panohub.py.
 
-5. Start the webserver to view images
-
-    cd ~/panohub    
-    ./webserver.py
-
-6. From browser input webserver url:port per instructions. Once you have url. ctl-c to exit webserver then restart in background
-
-    ./webserver.sh start    
-
-7. Restart ./panohub.py and align camera(s) using the webserver timelapse images
-You need to align vertically and horizontally.  Review image-stitching output on panohub.py.
-Once things are aligned you can start panohub.py as a background task using ***panohub.sh start***
-    
+Once images are aligned properly and stitching is working, you can start panohub.py as a background task using ***panohub.sh start***    
 It is best to start initially with two panosend cameras. You can then get 
 correct image overlap alignment.  Try a lot of overlap initially then narrow overlap.
 Images need to align vertically and horizontally.
+
 You can then add additional panosend hosts to the configuration by
-adding them to the panohub.yaml CAM_HOST_NAMES list variable.
+adding them to the panohub.yaml panohub_settings, CAM_HOST_NAMES list variable.
+When panohub.py is stopped, it will send a zmq stop message to each panosend computer and panowatch will
+stop the panosend background task. When panohub is restarted the panosend_settings will be send to panowatch
+on each panosend machine and panosend.py will be restarted as a background task.
 
 ## SAMPLE IMAGE
 This is one of the images taken in our computer/sewing room.  Not very exciting and will post better one
-when the project is further developed.  I use old RPI's.  Note the image below really resized.  Actual images
-are much larger depending on the camera resolution.  Original panosend images were 720p before stitching.
+when the project is further developed.  I use old RPI's.  Note the displayed image below is really resized.
+Select link for Actual image size which is much larger depending on the camera resolution.
+Original panosend images were 720p before stitching.
 
 [Full Size Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1284.jpg)   
 
