@@ -103,21 +103,22 @@ url bar per examples below.  Note change to suit your actual network details.
 
 When panohub.py is started, received images will be saved into the folders ***timelapse*** and ***pano_images***
     
-5. On panohub computer start panohub.py per commands below.  This will read the panohub.yaml file panosend_settings
+5. On panohub computer start panohub.py per commands below. This RPI can be any RPI your network.
+You will get faster stitching using a RPI4. panohub.py will read the panohub.yaml file panosend_settings
 section, modify the ZMQ_PANOHUB_IP setting and stream to panowatch.py on each panosend computer.
-panohub.py will create a panosend.yaml file and stream to each panowatch on each panosend computer, 
-then start/restart panosend.sh that will read settings from this transmitted panosend.yaml file.       
+panowatch.py will create a panosend.yaml from the panohub stream. panowatch will  
+then start/restart panosend.sh that will read its settings from the transmitted panosend.yaml file.       
 
     cd ~/panohub    
     ./panohub.py
 
-Review panohub.py log messages and confirm images are being received.     
+Review panohub.py log messages and confirm images are being received from each panosend camera.     
 Align panosend computer camera(s) using the webserver timelapse images as a guide. Pick a
 few objects in images for reference. You will need to align camera views vertically and horizontally.
-When stitching is successful you can view the in the pano_images folder
+When stitching is successful you can view results in the pano_images folder via web browser interface.
  
-It is best to start initially with two panosend cameras. You can then get 
-correct image overlap image alignment.  Try a lot of overlap initially then narrow overlap.
+It is best to start initially with two panosend cameras. It will then be easier to get 
+correct image overlap alignment. Try a lot of overlap initially then narrow overlap.
 Images need to align vertically and horizontally.
 
 You can then add additional panosend hosts to the configuration by
