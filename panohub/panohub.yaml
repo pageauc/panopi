@@ -2,7 +2,7 @@
 # Purpose - Multi RPI Auto Panoramic Stitching Timelapse
 # Updated - 11 Sep 2020   Testing and Development
 # Done by - Claude Pageau
-# version 0.62
+# version 0.65
 
 panohub_settings: # These settings are used by pano-hub.py for receiving and stitching images.
 
@@ -21,7 +21,7 @@ panohub_settings: # These settings are used by pano-hub.py for receiving and sti
     TIMELAPSE_TIMER : 60  # seconds between timelapse images
     TIMELAPSE_SEQ_NUM_START : 1000
     TIMELAPSE_SEQ_NUM_MAX : 400  # Maximum number of SEQ images. 0 = Continuous
-    TIMELAPSE_SEQ_NUM_RECYCLE_ON : True  # When MAX reached True= Restart SEQ False= Exit
+    TIMELAPSE_SEQ_NUM_RECYCLE_ON : True  # True= restart SEQ When MAX reached   False= Exit
 
     # setting to communicate with remote pano-watch.py used to config and restart pano-send.py
     ZMQ_WATCH_PORT : '5556'

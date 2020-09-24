@@ -389,12 +389,12 @@ def do_pano_hub():
                 and TIMELAPSE_SEQ_NUM_RECYCLE_ON):
                 image_seq_num = TIMELAPSE_SEQ_NUM_START
                 print('panohub.py: Recycle Enabled. Restart SEQ at %i' %
-                      TIMELAPSE_SEQ_NUM_START)     
+                      TIMELAPSE_SEQ_NUM_START)
             else:
                 if image_seq_num > (TIMELAPSE_SEQ_NUM_START + TIMELAPSE_SEQ_NUM_MAX):
                     print('panohub.py: Exit Program: SEQ_MAX=%i and RECYCLE_ON=%s' %
                           (TIMELAPSE_SEQ_NUM_MAX, TIMELAPSE_SEQ_NUM_RECYCLE_ON))
-                    sys.exit(1)                        
+                    sys.exit(1)
             write_seq_num(image_seq_num, TIMELAPSE_SEQ_COUNTER_PATH)
             stitch_filename = IMAGE_PREFIX + str(image_seq_num) + '.jpg'
             stitch_path = os.path.join(IMAGE_PANO_DIR, stitch_filename)
