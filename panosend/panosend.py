@@ -13,7 +13,7 @@ Press Ctrl-C To End programs
 '''
 
 from __future__ import print_function
-PROG_VER = '0.62'
+PROG_VER = '0.63'
 print("panosend.py: Ver %s Loading ...." % PROG_VER)
 
 import sys
@@ -111,11 +111,18 @@ def take_stitch_image():
     ZMQ_HUB = ZMQ_PROTOCOL + ZMQ_PANOHUB_IP + ":" + str(ZMQ_PANOHUB_PORT)
     print('panosend.py: Connect %s to %s' % (RPI_NAME, ZMQ_HUB))
     sender = imagezmq.ImageSender(connect_to=ZMQ_HUB)
+    
+    # fix rounding problems with picamera resolution
+    fwidth = (CAM_WIDTH + 31) // 32 * 32
+    fheight = (CAM_HEIGHT + 15) // 16 * 16
+    print('panosend.py: Adjusted camera resolution roundup from %ix%i to %ix%i' %
+          (CAM_WIDTH, CAM_HEIGHT, fwidth, fheight))      
+    
     with picamera.PiCamera() as camera:
-        camera.resolution = (CAM_WIDTH, CAM_HEIGHT)
+        camera.resolution = (fwidth, fheight)
         camera.hflip = CAM_HFLIP
         camera.vflip = CAM_VFLIP
-        image_buf = np.empty((CAM_HEIGHT, CAM_WIDTH, 3), dtype=np.uint8)
+        image_buf = np.empty((fheight, fwidth, 3), dtype=np.uint8)
         time.sleep(2)  # Allow Camera to Warm Up
         next_timelapse = datetime.datetime.now()
         while True:
