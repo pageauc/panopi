@@ -100,24 +100,23 @@ This will run panowatch.py as a background task.
     192.168.1.177:8080    
     mypanohub.local:8080
 
-When panohub.py is started, received images will be saved into the folders timelapse and pano_images
+When panohub.py is started, received images will be saved into the folders ***timelapse*** and ***pano_images***
     
 5. On panohub computer start panohub.py per commands below.  This will read the panohub.yaml file panosend_settings
 section, modify the ZMQ_PANOHUB_IP setting and stream to panowatch.py on each panosend computer.
-This will create a panosend.yaml file and start/restart panosend.sh that will get its settings from this yaml file.   
+panohub.py will create a panosend.yaml file and stream to each panowatch on each panosend computer, 
+then start/restart panosend.sh that will read settings from this transmitted panosend.yaml file.   
 
     cd ~/panohub    
     ./panohub.py
 
-Review panohub.py log messages and confirm images are being received. ctrl-c to exit      
+Review panohub.py log messages and confirm images are being received.     
 Align panosend computer camera(s) using the webserver timelapse images as a guide. Pick a
-few objects in images for reference.
-You will need to align camera views vertically and horizontally.
-Review image-stitching output on panohub.py.
-
-Once images are aligned properly and stitching is working, you can start panohub.py as a background task using ***panohub.sh start***    
+few objects in images for reference. You will need to align camera views vertically and horizontally.
+When stitching is successful you can view the in the pano_images folder
+ 
 It is best to start initially with two panosend cameras. You can then get 
-correct image overlap alignment.  Try a lot of overlap initially then narrow overlap.
+correct image overlap image alignment.  Try a lot of overlap initially then narrow overlap.
 Images need to align vertically and horizontally.
 
 You can then add additional panosend hosts to the configuration by
@@ -125,6 +124,12 @@ adding them to the panohub.yaml panohub_settings, CAM_HOST_NAMES list variable.
 When panohub.py is stopped, it will send a zmq stop message to each panosend computer and panowatch will
 stop the panosend background task. When panohub is restarted the panosend_settings will be send to panowatch
 on each panosend machine and panosend.py will be restarted as a background task.
+Press ctrl-c to exit panohub.py.
+
+Once images are aligned properly and stitching is working, you can start panohub.py 
+as a background task using command 
+
+    ./panohub.sh start  
 
 ## SAMPLE IMAGE
 This is one of the images taken in our computer/sewing room.  Not very exciting and will post better one
