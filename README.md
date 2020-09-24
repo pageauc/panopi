@@ -73,10 +73,10 @@ Image with three cameras mounted on a board using wooden dowels per design drawi
 (Assumes you are comfortable with SSH, Terminal Session commands)
 
 1. Edit panohub.yaml to change ***panohub_settings*** CAM_HOST_NAMES to reflect the panosend zeroconf host names.
-review other settings like IMAGE_PREFIX, TIMELAPSE_TIMER, Etc as required. 
+Review other settings like IMAGE_PREFIX, TIMELAPSE_TIMER, Etc as required. 
 Move down to ***panosend_settings*** and review CAM_WIDTH, CAM_HEIGHT, Etc
 ***IMPORTANT*** You DO NOT need to change the ***ZMQ_PANOHUB_IP*** setting since this will
-be changed automatically to reflect the actual panohub computer ip address.    
+be changed automatically by panohub.py to reflect the actual panohub computer ip address.    
   
     cd ~/panohub    
     nano panohub.yaml
