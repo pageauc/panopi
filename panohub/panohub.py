@@ -78,7 +78,7 @@ MY_PATH = os.path.abspath(__file__)
 BASE_DIR = os.path.dirname(MY_PATH)
 BASE_FILENAME = os.path.splitext(os.path.basename(MY_PATH))[0]
 PROG_NAME = os.path.basename(__file__)
-PROG_VER = '0.64'
+PROG_VER = '0.65'
 
 # Yaml File Settings to read variables
 YAML_FILEPATH = './panohub.yaml'
@@ -313,18 +313,6 @@ def stitch_images(image_seq_num, stitch_cmd):
     except IOError:
         print('panohub.py: IOError subprocess %s' % stitch_cmd)
 
-    if TIMELAPSE_SEQ_NUM_MAX == 0:
-        pass
-    elif (image_seq_num > (TIMELAPSE_SEQ_NUM_START + TIMELAPSE_SEQ_NUM_MAX)
-        and TIMELAPSE_SEQ_NUM_RECYCLE_ON):
-        image_seq_num = TIMELAPSE_SEQ_NUM_START
-        print('panohub.py: Recycle Enabled. Restart SEQ at %i' %
-               TIMELAPSE_SEQ_NUM_START)
-    elif image_seq_num > (TIMELAPSE_SEQ_NUM_START + TIMELAPSE_SEQ_NUM_MAX):
-        print('panohub.py: Exit Program: SEQ_MAX=%i and RECYCLE_ON=%s' %
-               (TIMELAPSE_SEQ_NUM_MAX, TIMELAPSE_SEQ_NUM_RECYCLE_ON))
-        sys.exit(1)
-
 #---------------------------------------------------------------
 def do_pano_hub():
     '''
@@ -395,6 +383,18 @@ def do_pano_hub():
 
             # create next stitch_path and stitch_cmd initial command string
             image_seq_num += 1
+            if TIMELAPSE_SEQ_NUM_MAX == 0:
+                pass
+            elif (image_seq_num > (TIMELAPSE_SEQ_NUM_START + TIMELAPSE_SEQ_NUM_MAX)
+                and TIMELAPSE_SEQ_NUM_RECYCLE_ON):
+                image_seq_num = TIMELAPSE_SEQ_NUM_START
+                print('panohub.py: Recycle Enabled. Restart SEQ at %i' %
+                      TIMELAPSE_SEQ_NUM_START)     
+            else:
+                if image_seq_num > (TIMELAPSE_SEQ_NUM_START + TIMELAPSE_SEQ_NUM_MAX):
+                    print('panohub.py: Exit Program: SEQ_MAX=%i and RECYCLE_ON=%s' %
+                          (TIMELAPSE_SEQ_NUM_MAX, TIMELAPSE_SEQ_NUM_RECYCLE_ON))
+                    sys.exit(1)                        
             write_seq_num(image_seq_num, TIMELAPSE_SEQ_COUNTER_PATH)
             stitch_filename = IMAGE_PREFIX + str(image_seq_num) + '.jpg'
             stitch_path = os.path.join(IMAGE_PANO_DIR, stitch_filename)
