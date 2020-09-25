@@ -69,7 +69,10 @@ if you wish.  I have made several different heights to allow cameras to see over
 Image with three cameras mounted on a board using wooden dowels per design drawing details.
 ![RPI CAM STAND CLOSE](https://github.com/pageauc/panopi/blob/master/rpi-stand-1.jpg)
 
-![RPI CAM STAND FAR](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.jpg)    
+Image of the rpi-stand taken by myself    
+![RPI CAM STAND FAR](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.jpg)
+
+1080p psno taken by the panosend RPI's        
 ![PANOSEND OF ME](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)
 
 ## INSTRUCTIONS 
