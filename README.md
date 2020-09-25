@@ -52,30 +52,6 @@ The stitching program is a modified version of openpano.  For details see my Rep
 ***NOTE:***  This project is still in the development stage but I will be happy to assist anyone
 if you post a github issue on the panopi github repo.
 
-## RPI CAM STAND 
-I found aligning the camera's very tricky.  I designed a simple foamboard stand that allows adjusting the
-camera views accurately. The camera image overlap and alignment can be set easily.  Also since the stand
-mounts are just dowels, I mounted mine on a board so camera setup can be transported easily.  I am using wifi
-and will use a ANKER powered hub with one ft long usb cables. This will give a clean setup. The cam stand
-dowel can be inserted into any horizontal or vertical serface (as long as you can drill a dowel hole). I suggest
-you mount to board and then mount the board on a wall or flat surface.
-
-Below is the foam board design template in pdf format. This can be printed and used as a template. Adjust height to your liking
-if you wish.  I have made several different heights to allow cameras to see over window frames.  My RPI's have cases that mount the
- camera internally. If you have different case your camera mounting details might be different.
-
-[RPI CAM STAND PDF template](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.pdf)    
-
-Image with three cameras mounted on a board using wooden dowels per design drawing details.
-![RPI CAM STAND CLOSE](https://github.com/pageauc/panopi/blob/master/rpi-stand-1.jpg)
-
-
-1080p pano taken by the panosend RPI's        
-![PANOSEND OF ME](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)    
-
-Image of the rpi-stand taken by myself    
-![RPI CAM STAND FAR](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.jpg)    
-
 ## INSTRUCTIONS 
 (Assumes you are comfortable with SSH, Terminal Session commands)
 
@@ -139,6 +115,31 @@ Once images are aligned properly and stitching is working, you can start panohub
 as a background task using command 
 
     ./panohub.sh start  
+
+## RPI CAM STAND 
+I found aligning the camera's very tricky.  I designed a simple foamboard stand that allows adjusting the
+camera views accurately. The camera image overlap and alignment can be set easily.  Also since the stand
+mounts are just dowels, I mounted mine on a board so camera setup can be transported easily.  I am using wifi
+and will use a ANKER powered hub with one ft long usb cables. This will give a clean setup. The cam stand
+dowel can be inserted into any horizontal or vertical serface (as long as you can drill a dowel hole). I suggest
+you mount to board and then mount the board on a wall or flat surface.
+
+Below is the foam board design template in pdf format. This can be printed and used as a template. Adjust height to your liking
+if you wish.  I have made several different heights to allow cameras to see over window frames.  My RPI's have cases that mount the
+ camera internally. If you have different case your camera mounting details might be different.
+
+[RPI CAM STAND PDF template](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.pdf)    
+
+Image with three cameras mounted on a board using wooden dowels per design drawing details.
+![RPI CAM STAND CLOSE](https://github.com/pageauc/panopi/blob/master/rpi-stand-1.jpg)
+
+
+1080p pano taken by the panosend RPI's        
+![PANOSEND OF ME](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)    
+
+Image of the rpi-stand taken by myself    
+![RPI CAM STAND FAR](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.jpg)    
+
 
 ## SAMPLE IMAGES
 This is one of the images taken in our computer/sewing room.  Not very exciting and will post better one
