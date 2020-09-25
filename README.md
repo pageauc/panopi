@@ -64,7 +64,7 @@ Below is the foam board design template in pdf format. This can be printed and u
 if you wish.  I have made several different heights to allow cameras to see over window frames.  My RPI's have cases that mount the
  camera internally. If you have different case your camera mounting details might be different.
 
-[RPI CAM STAND PDF template](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)    
+[RPI CAM STAND PDF template](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.pdf)    
 
 Image with three cameras mounted on a board using wooden dowels per design drawing details.
 ![RPI CAM STAND CLOSE](https://github.com/pageauc/panopi/blob/master/rpi-stand-1.jpg)
@@ -145,11 +145,11 @@ when the project is further developed.  I use old RPI's.  Note the displayed ima
 Select link for Actual image size which is much larger depending on the camera resolution.
 Original panosend images were 720p before stitching.
 
-####1080p PANO
+#### 1080p PANO
 ![1080p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)    
 [1080p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)  
 
-####720p PANO  
+#### 720p PANO  
 ![720p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1145-720.jpg)    
 [720p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1145-720.jpg)
 
