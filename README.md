@@ -148,11 +148,11 @@ Original panosend images were 720p before stitching.
 
 #### 1080p PANO
 ![1080p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)    
-[1080p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)  
+[Click to View Full Size 1080p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)  
 
 #### 720p PANO  
 ![720p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1145-720.jpg)    
-[720p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1145-720.jpg)
+[Click to View Full Size 720p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1145-720.jpg)
 
 Regards    
 Claude ...
