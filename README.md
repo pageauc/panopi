@@ -66,8 +66,11 @@ if you wish.  I have made several different heights to allow cameras to see over
 
 [RPI CAM STAND PDF template](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)    
 
-Image with three cameras mounted on a board using wooden dowels per design drawing details.  
-![RPI CAM STAND](https://github.com/pageauc/panopi/blob/master/rpi-stand.png)
+Image with three cameras mounted on a board using wooden dowels per design drawing details.
+![RPI CAM STAND CLOSE](https://github.com/pageauc/panopi/blob/master/rpi-stand-1.jpg)
+
+![RPI CAM STAND FAR](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.jpg)    
+![PANOSEND OF ME](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)
 
 ## INSTRUCTIONS 
 (Assumes you are comfortable with SSH, Terminal Session commands)
@@ -133,13 +136,19 @@ as a background task using command
 
     ./panohub.sh start  
 
-## SAMPLE IMAGE
+## SAMPLE IMAGES
 This is one of the images taken in our computer/sewing room.  Not very exciting and will post better one
 when the project is further developed.  I use old RPI's.  Note the displayed image below is really resized.
 Select link for Actual image size which is much larger depending on the camera resolution.
 Original panosend images were 720p before stitching.
 
-[Full Size Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1284.jpg)   
+####1080p PANO
+![1080p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)    
+[1080p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)  
 
-Below is a reduced size sample Pano Timelapse Image    
-![Small Pano image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1284.jpg)
+####720p PANO  
+![720p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1145-720.jpg)    
+[720p Pano Timelapse Image Sample](https://github.com/pageauc/panopi/blob/master/pano-tl-1145-720.jpg)
+
+Regards    
+Claude ...
