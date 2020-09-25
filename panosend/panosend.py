@@ -1,20 +1,23 @@
 #!/usr/bin/python3
 '''
-panosend.py -- written by Claude Pageau https://github.com/pageauc
+panosend.py -- written by Claude Pageau https://github.com/pageauc/panopi
 
 Description:
 This program will take a picamera image and
-send it to pano-hub.py via zmq settings.  Then wait for
-a return message containing the time for the next
-image to be taken.  pano-hub.py will then
+send it to the panohub.py RPI computer via zmq settings.
+It will then wait for a return message containing the time for the next
+image to be taken.  panohub.py will then
 attempt to stitch images into a panorama image if properly overlapped.
+Settings for panosend.py are set in the panhub.yaml file on panohub RPI.
+The settings are transferred to each panosend.py RPI and saved as panosend.yaml
+This is just a copy so don't try to edit this file since it will be overwritten.
 
-Press Ctrl-C To End programs
+Press Ctrl-C To End program
 '''
 
 from __future__ import print_function
 PROG_VER = '0.63'
-print("panosend.py: Ver %s Loading ...." % PROG_VER)
+print("panosend.py: ver %s Loading ...." % PROG_VER)
 
 import sys
 import os
@@ -111,13 +114,13 @@ def take_stitch_image():
     ZMQ_HUB = ZMQ_PROTOCOL + ZMQ_PANOHUB_IP + ":" + str(ZMQ_PANOHUB_PORT)
     print('panosend.py: Connect %s to %s' % (RPI_NAME, ZMQ_HUB))
     sender = imagezmq.ImageSender(connect_to=ZMQ_HUB)
-    
+
     # fix rounding problems with picamera resolution
     fwidth = (CAM_WIDTH + 31) // 32 * 32
     fheight = (CAM_HEIGHT + 15) // 16 * 16
     print('panosend.py: Adjusted camera resolution roundup from %ix%i to %ix%i' %
-          (CAM_WIDTH, CAM_HEIGHT, fwidth, fheight))      
-    
+          (CAM_WIDTH, CAM_HEIGHT, fwidth, fheight))
+
     with picamera.PiCamera() as camera:
         camera.resolution = (fwidth, fheight)
         camera.hflip = CAM_HFLIP
@@ -158,5 +161,5 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print('')
         print('panosend.py: User Exited with ctrl-c')
-        print("panosend.py: Ver %s Bye ..." % PROG_VER)
+        print("panosend.py: ver %s Bye ..." % PROG_VER)
 

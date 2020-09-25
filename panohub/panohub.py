@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 '''
-panohub.py -- written by Claude Pageau https://github.com/pageauc
+panohub.py -- written by Claude Pageau https://github.com/pageauc/panopi
 
 Description:
 A simple program that uses imagezmq to receive images from
-multiple network computers running pano-send.py and stitch images
+multiple network computers running panosend.py and stitch images
 to produce a stitched panoramic image. Camera resolution setting
-is configured in the pano-send.py file.
+is configured in the panohub.yaml file.
 Note: images need to properly overlap for stitching to be successful.
 
-Press Ctrl-C To End programs
+Press Ctrl-C To End program
 '''
 
 from __future__ import print_function
