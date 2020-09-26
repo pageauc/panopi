@@ -17,6 +17,7 @@ Press Ctrl-C To End program
 
 from __future__ import print_function
 PROG_VER = '0.63'
+
 print("panosend.py: ver %s Loading ...." % PROG_VER)
 
 import sys

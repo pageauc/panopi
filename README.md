@@ -17,7 +17,8 @@ Claude ....
 ### PANOHUB INSTALL
 On a raspberry pi computer on your local area network (using zeroconf). Install the panohub software per curl
 script below.  Note This does not need a picamera.  You can also choose to install on one of the
-panosend RPI's. Stitching takes some time to process so I advise a faster RPI for the panohub RPI.
+panosend RPI's. Stitching takes some time to process so I advise a faster RPI for the panohub RPI.  I am going
+to test an adhoc network setup to see how it works.
 
 **IMPORTANT** - It is suggested you do a Raspbian ***sudo apt-get update*** and ***sudo apt-get upgrade***
 before curl install.
@@ -130,7 +131,9 @@ if you wish.  I have made several different heights to allow cameras to see over
 
 [Click to View RPI CAM STAND PDF template](https://github.com/pageauc/panopi/blob/master/rpi-stand.pdf)    
 
-Image with three cameras mounted on a board using wooden dowels per design drawing details.
+Image with three RPI's with picamera modules mounted in the cases. The panosend RPI's are attached to a board using wooden dowels per design drawing details. 
+Also note the Anker powered USB hub and short one ft long USB cables. This makes for a cleaner setup that is much easier to transport.
+These are older single core RPI's so I had to use WIFI adapters.    
 ![RPI CAM STAND CLOSE](https://github.com/pageauc/panopi/blob/master/rpi-stand-1.jpg)
 
 
