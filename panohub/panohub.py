@@ -134,7 +134,8 @@ def get_senders(host_list):
         ip_addr = get_remote_host_ip(hostname)
         if ip_addr is not None:
             host_dict.update({hostname:[ip_addr, ZMQ_WATCH_PORT]})
-            print('panohub.py: %s zmq connect at tcp://%s:%s' % (hostname, ip_addr, ZMQ_WATCH_PORT))
+            print('panohub.py: %s is connected to zmq tcp://%s:%s' %
+                  (hostname, ip_addr, ZMQ_WATCH_PORT))
     return host_dict
 
 #---------------------------------------------------------------
@@ -158,20 +159,24 @@ def notify_senders(host_list, restart=True):
         host_name = pano_senders[key]
         ip, port = val  # Read sender connection details
         ip_addr = ip.encode('utf-8')
-        print('panohub.py: %s Connect %s:%s' % (key, ip, port))
+        print('panohub.py: %s Connect at tcp://%s:%s' % (key, ip, port))
         context = zmq.Context()
         sender = context.socket(zmq.REQ)
         sender.connect(ZMQ_PROTOCOL + ip + ":" + port)
-        print('panohub.py: %s Send yaml data to %s:%s' % (key, ip, port))
+        print('panohub.py: %s Send yaml data to tcp://%s:%s' %
+              (key, ip, port))
         reply_from = b''
+        retries = 0
         while not (reply_from == ip_addr):
             sender.send(yaml_data)
             reply_from = sender.recv()
             if reply_from == ip_addr:
-                print('panohub.py: %s Success: Got Reply from %s' % (key, reply_from))
+                print('panohub.py: %s Successful Reply from %s' %
+                      (key, reply_from))
             else:
-                print('panohub.py: %s Retry .. Got Reply from %s instead of %s' %
-                      (key, reply_from, ip_addr))
+                retries += 1
+                print('panohub.py: %s Reply %i from %s instead of %s' %
+                      (key, retries, reply_from, ip_addr))
             time.sleep(0.2)  # Allow short delay before retry.
 
 #---------------------------------------------------------------

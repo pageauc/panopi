@@ -17,7 +17,7 @@ Press Ctrl-C To End program
 
 from __future__ import print_function
 import os
-PROG_VER = '0.65'
+PROG_VER = '0.66'
 PROG_NAME = os.path.basename(__file__)
 print('%s ver %s Loading ...' % (PROG_NAME, PROG_VER))
 
@@ -146,6 +146,7 @@ def take_stitch_image():
                                                             '%Y/%m/%d %H:%M:%S')
                 print('panosend.py: Waiting for next_timelapse at %s' %
                        hub_reply.decode('utf-8'))
+            time.sleep(0.01)  # slow looping a bit to reduce cpu usage
 
 #---------------------------------------------------------------
 if __name__ == '__main__':

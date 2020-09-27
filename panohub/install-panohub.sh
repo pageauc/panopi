@@ -26,8 +26,8 @@ echo "$STATUS panosend-install.sh ver $ver"
 echo "-----------------------------------------------"
 echo "$STATUS Download GitHub Files"
 if $is_upgrade ; then
-    installFiles=("panohub.py" "panohub.sh" "panohub.yaml" \
-                  "webserver.py" "webserver.sh" "image-stitching" "config.cfg")
+    installFiles=("panohub.py" "panohub.sh" \
+                  "webserver.py" "webserver.sh" "image-stitching")
 else
     installFiles=("panohub.py" "panohub.sh" "panohub.yaml" \
                   "webserver.py" "webserver.sh" "image-stitching" "config.cfg")
