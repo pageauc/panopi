@@ -30,7 +30,7 @@ before curl install.
 This will create a /home/pi/panohub folder and required files for communicating with panosend RPI's and 
 stitching received images.  Default timelapse period is 60 seconds.  The webserver can be used to
 view and align images.     
-See [INSTRUCTIONS](https://github.com/pageauc/panopi/README.md/#instructions) below for more details. 
+See [INSTRUCTIONS](https://github.com/pageauc/panopi/#instructions) below for more details. 
 
 ### PANOSEND INSTALL
 On each RPI computer with a picamera installed and working, the curl script below will install the panosend files
