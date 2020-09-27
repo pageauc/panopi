@@ -59,7 +59,8 @@ To save changes and exit nano press ctrl-x y
 ## INSTRUCTIONS 
 (Assumes you are comfortable with SSH, Terminal Session commands)
 
-1. Edit panohub.yaml to change ***panohub_settings*** CAM_HOST_NAMES to reflect the panosend zeroconf host names.
+#### Step 1
+Edit panohub.yaml to change ***panohub_settings*** CAM_HOST_NAMES to reflect the panosend zeroconf host names.
 Review other settings like IMAGE_PREFIX, TIMELAPSE_TIMER, Etc as required. 
 Move down to ***panosend_settings*** and review CAM_WIDTH, CAM_HEIGHT, Etc
 ***IMPORTANT*** You DO NOT need to change the ***ZMQ_PANOHUB_IP*** setting since this will
@@ -70,19 +71,22 @@ be changed automatically by panohub.py to reflect the actual panohub computer ip
 
 To save changes and exit nano press ctrl-x y     
 
-2. On each panosend host start the panowatch.sh script per commands below.       
+#### Step 2
+On each panosend host start the panowatch.sh script per commands below.       
 
     cd ~/panosend    
     ./panowatch.sh start  
 
 This will run panowatch.py as a background task.
 
-3. On panohub computer start the webserver to view images per commands below.    
+#### Step 3
+On panohub computer start the webserver to view images per commands below.    
 
     cd ~/panohub    
     ./webserver.sh start
 
-4. On any local area computer, Web browser input webserver url:port on the web browser
+#### Step 4
+On any local area computer, Web browser input webserver url:port on the web browser
 url bar per examples below.  Note change to suit your actual network details.    
 
     192.168.1.177:8080    
@@ -90,7 +94,8 @@ url bar per examples below.  Note change to suit your actual network details.
 
 When panohub.py is started, received images will be saved into the folders ***timelapse*** and ***pano_images***
     
-5. On panohub computer start panohub.py per commands below. This RPI can be any RPI your network.
+#### Step 5
+On panohub computer start panohub.py per commands below. This RPI can be any RPI your network.
 You will get faster stitching using a RPI4. panohub.py will read the panohub.yaml file panosend_settings
 section, modify the ZMQ_PANOHUB_IP setting and stream to panowatch.py on each panosend computer.
 panowatch.py will create a panosend.yaml from the panohub stream. panowatch will  
