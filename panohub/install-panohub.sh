@@ -73,7 +73,8 @@ $STATUS Complete
 INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
 
 1 Edit panohub.yaml to change CAM_HOST_NAMES to reflect the panosend zeroconf host names.
-  Review other settings as required eg camera resolution.
+  I suggest you start with two panosend hosts.
+  Review other settings as required eg TIMELAPSE_TIMER, CAM_WIDTH, CAM_HEIGHT, Etc.
     cd ~/panohub
     nano panohub.yaml
     To save changes and exit nano press ctrl-x y
@@ -91,12 +92,13 @@ INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
   Record browser URL:PORT per instructions
   ctl-c to exit then restart webserverin background
     ./webserver.sh start
-  To view images Enter URL:PORT into URL bar of a network computer web browser.
+  To view images Enter http://URL:PORT into URL bar of a network computer web browser.
 5 Restart./panohub.py and align camera(s) using the webserver timelapse images
   You need to align vertically and horizontally.  Review image-stitching
-  output.  It is best to start with two panosend cameras and get alignment
-  You can then add additional panosend hosts to the configuration by
-  adding them to the panohub.yaml CAM_HOST_NAMES list variable.
+  output. 
+  It is best to start with two panosend cameras and adjust alignment.
+  You can add/remove panosend hosts by editing the CAM_HOST_NAMES list variable
+  in the panohub.yaml file.  To save changes and exit nano press ctrl-x y
 
 -----------------------------------------------
 For Detailed Instructions See https://github.com/pageauc/panopi/wiki
