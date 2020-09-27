@@ -4,10 +4,9 @@
 This project uses [imagezmq](https://github.com/jeffbass/imagezmq) to transfer images from multiple panosend RPI's to a single panohub RPI. 
 All panosend RPI's are sent a timestamp so all sequence images are taken at the same time. The panhub computer
 stores timelapse sequence images in ***media/timelapse*** folder and will then attempt to stitch the images in the sequence.
-If successful the pano images will be saved in the ***media/pano-images*** folder and can be viewed using my included webserver.  There
-are still a few issues with getting consistent cropping in our computer/sewing room, probably due to lighting. 
-Outdoor locations are much better. If necessary I will use my video editor's image stabilization filter. 
-Currently the project is still a work in progress. Using a RPI4 as hub I was able to get three 720p image stitch times of about six seconds.
+The next sequence number is saved in a ***panohub.dat*** file. Seqence numbering will start where it left off if panohub.py is
+interrupted. Delete this file to restart numbering. If stitching is successful the pano images will be saved in the ***media/pano-images*** folder. 
+Images can be viewed using the included webserver. Using a RPI4 for panub, I was able to get three 720p image stitch times of about six seconds.
 The stitching program is a modified version of openpano.  For details see my Repo at https://github.com/pageauc/OpenPano
 
 Claude ....
