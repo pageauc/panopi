@@ -144,14 +144,6 @@ Also note the Anker powered USB hub and short one ft long USB cables. This makes
 These are older single core RPI's so I had to use WIFI adapters.    
 ![RPI CAM STAND CLOSE](https://github.com/pageauc/panopi/blob/master/rpi-stand-1.jpg)
 
-
-1080p pano taken by the panosend RPI's        
-![PANOSEND OF ME](https://github.com/pageauc/panopi/blob/master/pano-tl-1130_1080.jpg)    
-
-Image of the rpi-stand taken by myself    
-![RPI CAM STAND FAR](https://github.com/pageauc/panopi/blob/master/rpi-stand-2.jpg)    
-
-
 ## SAMPLE IMAGES
 This is one of the images taken in our computer/sewing room.  Not very exciting and will post better one
 when the project is further developed.  I use old RPI's.  Note the displayed image below is really resized.
