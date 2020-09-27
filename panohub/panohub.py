@@ -14,8 +14,10 @@ Press Ctrl-C To End program
 '''
 
 from __future__ import print_function
-print('panohub.py: Loading ...')
 import os
+PROG_NAME = os.path.basename(__file__)
+PROG_VER = '0.65'
+print('%s ver %s Loading ...' % (PROG_NAME, PROG_VER))
 import sys
 import socket
 import time
@@ -77,8 +79,6 @@ MY_PATH = os.path.abspath(__file__)
 # get the path location only (excluding script name)
 BASE_DIR = os.path.dirname(MY_PATH)
 BASE_FILENAME = os.path.splitext(os.path.basename(MY_PATH))[0]
-PROG_NAME = os.path.basename(__file__)
-PROG_VER = '0.65'
 
 # Yaml File Settings to read variables
 YAML_FILEPATH = './panohub.yaml'
@@ -406,11 +406,11 @@ def do_pano_hub():
             print('panohub.py: Seq %i Listening for panosend Images ...' % image_seq_num)
 
 print('-----------------------------------------------------------')
-print('%s: Ver %s written by Claude Pageau' % (PROG_NAME, PROG_VER))
+print('%s ver %s written by Claude Pageau' % (PROG_NAME, PROG_VER))
 print('-----------------------------------------------------------')
-print('panohub.py: Version %s Initializing ...' % PROG_VER)
+print('%s: Version %s Initializing ...' % (PROG_NAME, PROG_VER))
 read_yaml_vars(YAML_FILEPATH, YAML_SECTION_NAME)
-print('%s: %s modified by Claude Pageau from https://github.com/ppwwyyxx/OpenPano' %
+print('%s: %s modified by Claude Pageau per https://github.com/pageauc/OpenPano' %
       (PROG_NAME, STITCH_PROGRAM))
 
 notify_senders(CAM_HOST_NAMES, True)  # Send yaml file to panowatch.py

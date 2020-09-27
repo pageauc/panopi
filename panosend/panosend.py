@@ -16,12 +16,12 @@ Press Ctrl-C To End program
 '''
 
 from __future__ import print_function
-PROG_VER = '0.63'
-
-print("panosend.py: ver %s Loading ...." % PROG_VER)
+import os
+PROG_VER = '0.65'
+PROG_NAME = os.path.basename(__file__)
+print('%s ver %s Loading ...' % (PROG_NAME, PROG_VER))
 
 import sys
-import os
 import time
 import datetime
 import socket
@@ -149,6 +149,9 @@ def take_stitch_image():
 
 #---------------------------------------------------------------
 if __name__ == '__main__':
+    print('-----------------------------------------------------------')
+    print('%s ver %s written by Claude Pageau' % (PROG_NAME, PROG_VER))
+    print('-----------------------------------------------------------')
 
     YAML_FILEPATH = './panosend.yaml'
     YAML_SECTION_NAME = 'panosend_settings'
