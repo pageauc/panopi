@@ -73,29 +73,26 @@ $STATUS Complete
 INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
 
 1 Edit panohub.yaml to change CAM_HOST_NAMES to reflect the panosend zeroconf host names.
-  review other settings as required.
+  Review other settings as required eg camera resolution.
     cd ~/panohub
     nano panohub.yaml
     To save changes and exit nano press ctrl-x y
-2 Edit panosend.yaml to reflect IP address of panohub computer.
-    ifconfig      # displays ip address details
-    nano panosend.yaml
-    To save changes and exit nano press ctrl-x y
-3 On each panosend host start the panowatch.sh script
+2 On each panosend host start the panowatch.sh script
     cd ~/panosend
     ./panowatch.sh start
   This will run panowatch.py as a background deamon.
-4 On panohub computer start panohub.py
+3 On panohub computer start panohub.py
     cd ~/panohub
     ./panohub.py
-  Review output and confirm images are being received. ctrl-c to exit
-5 Start the webserver to view images
+  Review output and confirm all host images are being received. ctrl-c to exit
+4 Start the webserver to get URL:PORT
     cd ~/panohub
     ./webserver.py
-  From browser input webserver url:port per instructions.
-  Once you have url. ctl-c to exit webserver then restart in background
+  Record browser URL:PORT per instructions
+  ctl-c to exit then restart webserverin background
     ./webserver.sh start
-6 Restart./panohub.py and align camera(s) using the webserver timelapse images
+  To view images Enter URL:PORT into URL bar of a network computer web browser.
+5 Restart./panohub.py and align camera(s) using the webserver timelapse images
   You need to align vertically and horizontally.  Review image-stitching
   output.  It is best to start with two panosend cameras and get alignment
   You can then add additional panosend hosts to the configuration by
