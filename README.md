@@ -7,8 +7,8 @@ stores timelapse sequence images in ***media/timelapse*** folder and will then a
 If successful the pano images will be saved in the ***media/pano-images*** folder and can be viewed using my included webserver.  There
 are still a few issues with getting consistent cropping in our computer/sewing room, probably due to lighting. 
 Outdoor locations are much better. If necessary I will use my video editor's image stabilization filter. 
-Currently the project is still a work in progress. Using a RPI4 as hub I was able to get 720p images stitch times of about six seconds.
-Will do more testing and improvements as project moves along.
+Currently the project is still a work in progress. Using a RPI4 as hub I was able to get three 720p image stitch times of about six seconds.
+The stitching program is a modified version of openpano.  For details see my Repo at https://github.com/pageauc/OpenPano
 
 Claude ....
 
@@ -40,18 +40,6 @@ into a /home/pi/panosend folder.
 ***Step 2*** On RPI putty SSH or terminal session right click, select paste then Enter to download and run script.
 
     curl -L https://raw.githubusercontent.com/pageauc/panopi/master/panosend/install-panosend.sh | bash
-
-## PROJECT DESCRIPTION
-
-Use multiple raspberry pi computers with picamera's installed and working to take overlapping timelapse images
-panosend.py will send images to a panohub.py computer via zmq. panosend.py will then receive a new timelapse timestamp
-that will ensure all images are taken at the same time. panohub.py will save images into
-a ***~/panohub/media/timelapse*** folder then stitch the overlapping sequence images into a cropped pano image and save
-into ***~/panohub/media/pano-images*** folder.  These files can be viewed by running the panohub webserver.
-The stitching program is a modified version of openpano.  For details see my Repo at https://github.com/pageauc/OpenPano
-
-***NOTE:***  This project is still in the development stage but I will be happy to assist anyone
-if you post a github issue on the panopi github repo.
 
 ## INSTRUCTIONS 
 (Assumes you are comfortable with SSH, Terminal Session commands)
