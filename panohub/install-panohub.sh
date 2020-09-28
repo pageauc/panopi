@@ -81,7 +81,7 @@ INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
 2 On each panosend host start the panowatch.sh script
     cd ~/panosend
     ./panowatch.sh start
-  This will run panowatch.py as a background deamon.
+  This will run panowatch.py as a background task.
 3 On panohub computer start panohub.py
     cd ~/panohub
     ./panohub.py
@@ -90,7 +90,7 @@ INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
     cd ~/panohub
     ./webserver.py
   Record browser URL:PORT per instructions
-  ctl-c to exit then restart webserverin background
+  ctl-c to exit then restart webserver as background task
     ./webserver.sh start
   To view images Enter http://URL:PORT into URL bar of a network computer web browser.
 5 Restart./panohub.py and align camera(s) using the webserver timelapse images
@@ -101,7 +101,7 @@ INSTRUCTIONS (Assumes you are comfortable with SSH, Terminal Session commands)
   in the panohub.yaml file.  To save changes and exit nano press ctrl-x y
 
 -----------------------------------------------
-For Detailed Instructions See https://github.com/pageauc/panopi/wiki
+For Detailed Instructions See https://github.com/pageauc/panopi
 $INSTALL_DIR version $ver
 Good Luck Claude ...
 Bye"
