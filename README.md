@@ -95,11 +95,12 @@ url bar per examples below.  Note change to suit your actual network details.
 When panohub.py is started, received images will be saved into the folders ***timelapse*** and ***pano_images***
     
 #### Step 5
-On panohub computer start panohub.py per commands below. This RPI can be any RPI your network.
+On panohub computer start panohub.py per commands below. This RPI can be any RPI on your network.
 You will get faster stitching using a RPI4. panohub.py will read the panohub.yaml file panosend_settings
 section, modify the ZMQ_PANOHUB_IP setting and stream to panowatch.py on each panosend computer.
-panowatch.py will create a panosend.yaml from the panohub stream. panowatch will  
-then start/restart panosend.sh that will read its settings from the transmitted panosend.yaml file.       
+panowatch.py will create a panosend.yaml from the transmitted panohub yaml stream. panowatch will  
+then start/restart panosend.sh that will start panosend.py as a background task getting its settings
+from the saved panosend.yaml file.       
 
     cd ~/panohub    
     ./panohub.py
